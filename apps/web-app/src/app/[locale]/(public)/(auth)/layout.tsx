@@ -1,4 +1,4 @@
-import { Card } from '@thom/ui/card'
+import { Card } from '@preza/ui/card'
 import { Logo } from '_/components/features/logo'
 import { Container } from '_/components/ui/container'
 import { AuthGuard } from './AuthGuard'

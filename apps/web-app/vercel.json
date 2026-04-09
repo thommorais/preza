@@ -1,5 +1,5 @@
 {
-	"buildCommand": "cd ../.. && pnpm turbo build --filter=@thom/web-app",
+	"buildCommand": "cd ../.. && pnpm turbo build --filter=@preza/web-app",
 	"installCommand": "pnpm install",
 	"framework": "nextjs"
 }

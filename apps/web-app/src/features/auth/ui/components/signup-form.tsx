@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@thom/ui/button'
-import { Input } from '@thom/ui/input'
+import { Button } from '@preza/ui/button'
+import { Input } from '@preza/ui/input'
 import { useSignupForm } from '_/features/auth/ui/hooks/use-signup-form'
 import { authFormStyles, styles } from './auth-form-styles'
 

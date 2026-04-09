@@ -1,4 +1,4 @@
-import { IconSprites } from '@thom/ui/icon'
+import { IconSprites } from '@preza/ui/icon'
 import { LocaleProviders } from '_/components/providers/locale-providers'
 import { HTML } from '_/components/ui/html'
 import { AuthProvider } from '_/features/auth/ui/contexts/auth-provider'

@@ -1,8 +1,8 @@
 'use client'
 
-import { Avatar } from '@thom/ui/avatar'
-import { Dropdown, DropdownButton, DropdownDivider, DropdownItem, DropdownLabel, DropdownMenu } from '@thom/ui/dropdown'
-import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from '@thom/ui/navbar'
+import { Avatar } from '@preza/ui/avatar'
+import { Dropdown, DropdownButton, DropdownDivider, DropdownItem, DropdownLabel, DropdownMenu } from '@preza/ui/dropdown'
+import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from '@preza/ui/navbar'
 import {
 	Sidebar,
 	SidebarBody,
@@ -13,8 +13,8 @@ import {
 	SidebarLabel,
 	SidebarSection,
 	SidebarSpacer,
-} from '@thom/ui/sidebar'
-import { SidebarLayout } from '@thom/ui/sidebar-layout'
+} from '@preza/ui/sidebar'
+import { SidebarLayout } from '@preza/ui/sidebar-layout'
 import { LocaleSwitcher } from '_/components/features/locale-switcher'
 import { Logo } from '_/components/features/logo'
 import { Container } from '_/components/ui/container'

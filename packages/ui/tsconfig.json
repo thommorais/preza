@@ -1,5 +1,5 @@
 {
-	"extends": "@thom/typescript-config/react-library.json",
+	"extends": "@preza/typescript-config/react-library.json",
 	"compilerOptions": {
 		"resolveJsonModule": true,
 		"experimentalDecorators": true,

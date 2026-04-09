@@ -1,5 +1,5 @@
 {
-	"name": "thom",
+	"name": "preza",
 	"private": true,
 	"scripts": {
 		"build": "turbo build",
@@ -9,11 +9,11 @@
 		"lint": "turbo lint",
 		"typecheck": "turbo typecheck",
 		"build:icons": "node ./packages/ui/scripts/build-icons.mjs",
-		"web:dev": "turbo dev --filter=@thom/web-app",
-		"web:build": "turbo build --filter=@thom/web-app",
+		"web:dev": "turbo dev --filter=@preza/web-app",
+		"web:build": "turbo build --filter=@preza/web-app",
 		"web:icons": "node ./apps/web-app/src/scripts/build-icons.mjs",
-		"web:start": "turbo start --filter=@thom/web-app",
-		"ui:build": "turbo build --filter=@thom/ui"
+		"web:start": "turbo start --filter=@preza/web-app",
+		"ui:build": "turbo build --filter=@preza/ui"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.10",

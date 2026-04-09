@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@thom/ui/button'
+import { Button } from '@preza/ui/button'
 import { useChangeLocale, useCurrentLocale } from '_/i18n/config-client'
 import { locales } from '_/i18n/dictionaries/locales'
 import type { Locale } from '_/i18n/dictionaries/types'

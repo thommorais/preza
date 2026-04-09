@@ -1,4 +1,4 @@
-import { Button } from '@thom/ui/button'
+import { Button } from '@preza/ui/button'
 import { HTML } from '_/components/ui/html'
 import { LOCAL_HREFS } from '_/constants'
 import { defaultLocale } from '_/i18n/dictionaries/locales'

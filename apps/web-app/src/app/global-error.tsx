@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@thom/ui/button'
-import { Card, CardFooter, CardHeader } from '@thom/ui/card'
+import { Button } from '@preza/ui/button'
+import { Card, CardFooter, CardHeader } from '@preza/ui/card'
 import { Container } from '_/components/ui/container'
 
 function GlobalError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {

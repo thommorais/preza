@@ -1,0 +1,517 @@
+{
+	"categories": [
+		{
+			"name": "Direito do Trabalho",
+			"description": "Normas e princípios que regulam as relações de trabalho",
+			"color": "#3b82f6"
+		},
+		{
+			"name": "Direito Constitucional",
+			"description": "Fundamentos constitucionais e direitos fundamentais",
+			"color": "#8b5cf6"
+		},
+		{
+			"name": "Direito Processual",
+			"description": "Procedimentos e recursos na Justiça do Trabalho",
+			"color": "#ef4444"
+		},
+		{
+			"name": "Direito Coletivo",
+			"description": "Sindicatos, negociação coletiva e instrumentos normativos",
+			"color": "#10b981"
+		},
+		{
+			"name": "Contratos",
+			"description": "Modalidades contratuais, alterações e extinção",
+			"color": "#f59e0b"
+		}
+	],
+	"decks": [
+	{
+		"title": "Constituição e Ordem Social",
+		"categories": ["Direito do Trabalho", "Direito Constitucional"],
+		"slug": "constituicao-ordem-social",
+		"color": "#3b7a57",
+		"description": "Direitos sociais e fundamentos constitucionais das relações de trabalho.",
+		"cards": [
+			{
+				"question": "O direito de greve dos trabalhadores está previsto em:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Art. 9º da Constituição",
+					"Art. 7º, XVII da Constituição",
+					"Art. 37, VII da Constituição",
+					"Art. 5º, XIII da Constituição"
+				],
+				"correct_answer": "Art. 9º da Constituição",
+				"difficulty_level": 2
+			},
+			{
+				"question": "O piso salarial nacional é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Fixado por lei federal",
+					"Definido por acordo coletivo nacional",
+					"Estabelecido por decreto presidencial",
+					"Regulado pelos estados sem limite federal"
+				],
+				"correct_answer": "Fixado por lei federal",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A proteção do salário contra redução, salvo acordo ou convenção coletiva, está no art.:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Art. 7º, VI",
+					"Art. 7º, XIII",
+					"Art. 7º, IV",
+					"Art. 5º, XXXV"
+				],
+				"correct_answer": "Art. 7º, VI",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A jornada de 6 horas para trabalho em turnos ininterruptos de revezamento é regra do art.:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Art. 7º, XIV",
+					"Art. 7º, XIII",
+					"Art. 7º, VI",
+					"Art. 9º"
+				],
+				"correct_answer": "Art. 7º, XIV",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A liberdade sindical é assegurada pelo princípio da:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Autonomia sindical",
+					"Unicidade sindical absoluta",
+					"Intervenção estatal obrigatória",
+					"Subordinação ao ministério competente"
+				],
+				"correct_answer": "Autonomia sindical",
+				"difficulty_level": 2
+			},
+			{
+				"question": "O FGTS possui natureza:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Depósito compulsório com finalidade social",
+					"Tributo de natureza extrafiscal",
+					"Contribuição previdenciária",
+					"Multa administrativa"
+				],
+				"correct_answer": "Depósito compulsório com finalidade social",
+				"difficulty_level": 3
+			}
+		]
+	},
+	{
+		"title": "Direito Coletivo do Trabalho",
+		"categories": ["Direito Coletivo", "Direito do Trabalho"],
+		"slug": "direito-coletivo",
+		"color": "#6b4c9a",
+		"description": "Sindicatos, negociação coletiva e acordo/convenção coletiva.",
+		"cards": [
+			{
+				"question": "Acordo coletivo é celebrado entre:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Sindicato e empresa",
+					"Dois sindicatos",
+					"Empresas apenas",
+					"Trabalhadores individualmente"
+				],
+				"correct_answer": "Sindicato e empresa",
+				"difficulty_level": 1
+			},
+			{
+				"question": "Convenção coletiva é celebrada entre:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Sindicato de trabalhadores e sindicato patronal",
+					"Sindicato e empresa",
+					"Governo e sindicato",
+					"Empresas do mesmo grupo"
+				],
+				"correct_answer": "Sindicato de trabalhadores e sindicato patronal",
+				"difficulty_level": 1
+			},
+			{
+				"question": "O princípio da prevalência do negociado sobre o legislado, na Reforma Trabalhista, aplica-se:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Em temas específicos previstos no art. 611-A",
+					"Sem limites, a qualquer direito",
+					"Apenas à jornada máxima constitucional",
+					"Somente ao salário mínimo"
+				],
+				"correct_answer": "Em temas específicos previstos no art. 611-A",
+				"difficulty_level": 3
+			},
+			{
+				"question": "O art. 620 da CLT estabelece que, havendo conflito, prevalece:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"A convenção coletiva sobre o acordo coletivo",
+					"O acordo coletivo sobre a convenção coletiva",
+					"A norma mais favorável sempre",
+					"A lei federal sobre instrumentos coletivos"
+				],
+				"correct_answer": "O acordo coletivo sobre a convenção coletiva",
+				"difficulty_level": 3
+			},
+			{
+				"question": "Contribuição sindical após a Reforma Trabalhista tornou-se:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Facultativa, mediante autorização prévia e expressa",
+					"Obrigatória para todos os trabalhadores",
+					"Exigível por decisões judiciais coletivas",
+					"Automática com desconto anual"
+				],
+				"correct_answer": "Facultativa, mediante autorização prévia e expressa",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A representação dos empregados nas empresas é prevista para unidades com:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Mais de 200 empregados",
+					"Mais de 100 empregados",
+					"Mais de 50 empregados",
+					"Qualquer número de empregados"
+				],
+				"correct_answer": "Mais de 200 empregados",
+				"difficulty_level": 2
+			}
+		]
+	},
+	{
+		"title": "Direito Processual do Trabalho",
+		"categories": ["Direito Processual", "Direito do Trabalho"],
+		"slug": "processo-trabalhista",
+		"color": "#8c3f3f",
+		"description": "Procedimentos, recursos e competências na Justiça do Trabalho.",
+		"cards": [
+			{
+				"question": "A competência material da Justiça do Trabalho abrange:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"As controvérsias oriundas da relação de trabalho",
+					"Qualquer causa civil entre pessoas",
+					"Apenas relações de emprego celetista",
+					"Somente acidentes do trabalho"
+				],
+				"correct_answer": "As controvérsias oriundas da relação de trabalho",
+				"difficulty_level": 3
+			},
+			{
+				"question": "O prazo para embargos de declaração na JT é de:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"5 dias",
+					"2 dias",
+					"8 dias",
+					"10 dias"
+				],
+				"correct_answer": "5 dias",
+				"difficulty_level": 2
+			},
+			{
+				"question": "O recurso ordinário na JT, em regra, possui prazo de:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"8 dias",
+					"5 dias",
+					"15 dias",
+					"10 dias"
+				],
+				"correct_answer": "8 dias",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A decisão monocrática do relator pode ser impugnada por:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Agravo interno",
+					"Recurso adesivo",
+					"Mandado de segurança",
+					"Embargos infringentes"
+				],
+				"correct_answer": "Agravo interno",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A Justiça do Trabalho adota o rito sumaríssimo para causas de valor:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Até 40 salários mínimos",
+					"Até 60 salários mínimos",
+					"Até 20 salários mínimos",
+					"Qualquer valor"
+				],
+				"correct_answer": "Até 40 salários mínimos",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A execução trabalhista admite a aplicação subsidiária do:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"CPC",
+					"CPP",
+					"Lei de Execuções Penais",
+					"Lei de Arbitragem"
+				],
+				"correct_answer": "CPC",
+				"difficulty_level": 2
+			}
+		]
+	},
+	{
+		"title": "Contrato de Trabalho",
+		"categories": ["Contratos", "Direito do Trabalho"],
+		"slug": "contrato-trabalho",
+		"color": "#b26f1f",
+		"description": "Modalidades contratuais, alterações e extinção do contrato.",
+		"cards": [
+			{
+				"question": "O contrato intermitente exige:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Convocação prévia e pagamento imediato ao fim de cada período",
+					"Jornada fixa semanal",
+					"Remuneração mensal fixa",
+					"Proibição de trabalho noturno"
+				],
+				"correct_answer": "Convocação prévia e pagamento imediato ao fim de cada período",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A alteração unilateral lesiva do contrato é vedada pelo princípio:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Da inalterabilidade contratual lesiva",
+					"Da primazia da realidade",
+					"Da continuidade da relação de emprego",
+					"Da irretroatividade"
+				],
+				"correct_answer": "Da inalterabilidade contratual lesiva",
+				"difficulty_level": 2
+			},
+			{
+				"question": "O contrato por prazo determinado pode ser prorrogado:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Uma única vez, sem exceder 2 anos",
+					"Livremente, sem limite",
+					"Apenas com autorização judicial",
+					"Apenas por convenção coletiva"
+				],
+				"correct_answer": "Uma única vez, sem exceder 2 anos",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A justa causa do empregado exige:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Falta grave tipificada na CLT",
+					"Qualquer falta leve",
+					"Apenas reincidência",
+					"Apenas dano material comprovado"
+				],
+				"correct_answer": "Falta grave tipificada na CLT",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A rescisão indireta ocorre quando:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"O empregador falta gravemente com suas obrigações",
+					"O empregado pede demissão",
+					"A empresa encerra atividades",
+					"Há acordo para extinção"
+				],
+				"correct_answer": "O empregador falta gravemente com suas obrigações",
+				"difficulty_level": 2
+			},
+			{
+				"question": "A estabilidade provisória do empregado acidentado é de:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"12 meses após o retorno ao trabalho",
+					"6 meses após o retorno",
+					"24 meses após o retorno",
+					"Apenas durante o afastamento"
+				],
+				"correct_answer": "12 meses após o retorno ao trabalho",
+				"difficulty_level": 3
+			}
+		]
+	},
+	{
+		"title": "Remuneração e Salário",
+		"categories": ["Direito do Trabalho"],
+		"slug": "remuneracao-salario",
+		"color": "#5c5cde",
+		"description": "Componentes do salário, descontos e proteção salarial.",
+		"cards": [
+			{
+				"question": "Gorjetas integram a remuneração para fim de:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Cálculo de encargos trabalhistas específicos",
+					"FGTS e INSS em todos os casos",
+					"Apenas IRPF",
+					"Não integram para qualquer finalidade"
+				],
+				"correct_answer": "Cálculo de encargos trabalhistas específicos",
+				"difficulty_level": 3
+			},
+			{
+				"question": "Descontos salariais podem ocorrer:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Quando previstos em lei ou autorizados",
+					"A critério exclusivo do empregador",
+					"Apenas por convênio coletivo",
+					"Nunca"
+				],
+				"correct_answer": "Quando previstos em lei ou autorizados",
+				"difficulty_level": 2
+			},
+			{
+				"question": "Salário complessivo é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Vedado, por não discriminar parcelas",
+					"Permitido se houver acordo",
+					"Obrigatório para cargos de confiança",
+					"Aplicável apenas a intermitente"
+				],
+				"correct_answer": "Vedado, por não discriminar parcelas",
+				"difficulty_level": 3
+			},
+			{
+				"question": "Adicional de horas extras mínimo é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"50% sobre a hora normal",
+					"20% sobre a hora normal",
+					"80% sobre a hora normal",
+					"30% sobre a hora normal"
+				],
+				"correct_answer": "50% sobre a hora normal",
+				"difficulty_level": 1
+			},
+			{
+				"question": "Participação nos lucros e resultados (PLR) tem natureza:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Não salarial",
+					"Salarial",
+					"Tributária",
+					"Provisória"
+				],
+				"correct_answer": "Não salarial",
+				"difficulty_level": 2
+			},
+			{
+				"question": "Equiparação salarial depende de:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Mesma função, trabalho de igual valor e mesma localidade",
+					"Tempo de casa superior",
+					"Título acadêmico superior",
+					"Promoção anterior"
+				],
+				"correct_answer": "Mesma função, trabalho de igual valor e mesma localidade",
+				"difficulty_level": 3
+			}
+		]
+	},
+	{
+		"title": "Terceirização e Responsabilidade",
+		"categories": ["Direito do Trabalho", "Contratos"],
+		"slug": "terceirizacao-responsabilidade",
+		"color": "#2b8a3e",
+		"description": "Terceirização, responsabilidade subsidiária e solidária.",
+		"cards": [
+			{
+				"question": "A terceirização de atividades-fim é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Permitida após reforma trabalhista e Lei 13.429/2017",
+					"Sempre proibida",
+					"Permitida apenas no setor público",
+					"Permitida apenas para serviços temporários"
+				],
+				"correct_answer": "Permitida após reforma trabalhista e Lei 13.429/2017",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A responsabilidade do tomador de serviços é, em regra:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Subsidiária",
+					"Solidária",
+					"Objetiva",
+					"Inexistente"
+				],
+				"correct_answer": "Subsidiária",
+				"difficulty_level": 2
+			},
+			{
+				"question": "No âmbito da Administração Pública, a responsabilidade é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Subsidiária, se comprovada culpa na fiscalização",
+					"Sempre solidária",
+					"Sempre inexistente",
+					"Objetiva, independentemente de culpa"
+				],
+				"correct_answer": "Subsidiária, se comprovada culpa na fiscalização",
+				"difficulty_level": 3
+			},
+			{
+				"question": "Pejotização caracteriza-se por:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Contratação por pessoa jurídica para mascarar relação de emprego",
+					"Parceria comercial genuína",
+					"Sociedade entre empregado e empregador",
+					"Estágio"
+				],
+				"correct_answer": "Contratação por pessoa jurídica para mascarar relação de emprego",
+				"difficulty_level": 2
+			},
+			{
+				"question": "Responsabilidade solidária ocorre quando:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Há previsão legal ou contratual específica",
+					"Sempre que houver terceirização",
+					"Apenas em contratos temporários",
+					"Nunca no direito do trabalho"
+				],
+				"correct_answer": "Há previsão legal ou contratual específica",
+				"difficulty_level": 3
+			},
+			{
+				"question": "A súmula que trata da responsabilidade subsidiária da Administração Pública é:",
+				"answer_type": "multiple_choice",
+				"answers": [
+					"Súmula 331 do TST",
+					"Súmula 363 do TST",
+					"Súmula 6 do TST",
+					"Súmula 90 do TST"
+				],
+				"correct_answer": "Súmula 331 do TST",
+				"difficulty_level": 2
+			}
+		]
+	}
+]
+}

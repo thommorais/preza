@@ -1,0 +1,103 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**", "!!.turbo", "!!.claude", "!**/pocketbase-types.ts", "!!.next", "!!dist", "!!node_modules"]
+	},
+	"formatter": {
+		"enabled": true,
+		"lineWidth": 120,
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"indentStyle": "tab"
+	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "asNeeded",
+			"quoteStyle": "single",
+			"trailingCommas": "all",
+			"bracketSpacing": true,
+			"bracketSameLine": false,
+			"jsxQuoteStyle": "single",
+			"arrowParentheses": "asNeeded"
+		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true,
+			"tailwindDirectives": true
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noDefaultExport": "warn",
+				"noParameterAssign": "error",
+				"useEnumInitializers": "error",
+				"useExportType": "error",
+				"useConst": "error",
+				"useForOf": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useThrowOnlyError": "error"
+			},
+			"a11y": {
+				"noSvgWithoutTitle": {
+					"level": "off"
+				},
+				"useSemanticElements": "off",
+				"useAriaPropsSupportedByRole": "off"
+			},
+			"complexity": {
+				"noBannedTypes": "error",
+				"noExcessiveCognitiveComplexity": {
+					"level": "warn",
+					"options": {
+						"maxAllowedComplexity": 15
+					}
+				},
+				"noForEach": "error"
+			},
+			"correctness": {
+				"useUniqueElementIds": "warn",
+				"noUnusedImports": {
+					"level": "error",
+					"fix": "safe",
+					"options": {}
+				},
+				"noUnusedVariables": "error"
+			},
+			"suspicious": {
+				"noUnknownAtRules": "off",
+				"noAlert": "error",
+				"noConsole": "warn"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "error",
+					"fix": "safe",
+					"options": {
+						"functions": ["clsx", "cva", "tv"]
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+# Cocogitto configuration file
+# Learn more: https://docs.cocogitto.io/config/
+
+# Repository configuration
+[changelog]
+path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+repository = "thom"
+owner = "thommorais"
+
+# Git hooks configuration
+[git_hooks]
+# Run cocogitto check on commit-msg hook
+commit_msg = "cog verify --file $1"
+
+# Optional: run checks before commit
+pre_commit = "pnpm lint"
+
+# Monorepo configuration (optional)
+# Uncomment if you want separate changelogs per package
+# [monorepo]
+# [[monorepo.packages]]
+# path = "apps/web-app"
+# include = ["apps/web-app"]
+#
+# [[monorepo.packages]]
+# path = "apps/base"
+# include = ["apps/base"]
+#
+# [[monorepo.packages]]
+# path = "packages/ui"
+# include = ["packages/ui"]

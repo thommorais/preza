@@ -1,0 +1,184 @@
+{
+	// ========================================
+	// PACKAGE MANAGER
+	// ========================================
+	"npm.packageManager": "pnpm",
+
+	// ========================================
+	// EDITOR CONFIGURATION
+	// ========================================
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "always",
+		"source.addMissingImports": "always",
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports": "never"
+	},
+	"editor.bracketPairColorization.enabled": true,
+	"editor.guides.bracketPairs": "active",
+	"editor.inlayHints.enabled": "onUnlessPressed",
+
+	// ========================================
+	// TYPESCRIPT CONFIGURATION
+	// ========================================
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.suggest.autoImports": true,
+	"typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.preferences.includePackageJsonAutoImports": "off",
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
+	"typescript.preferences.importModuleSpecifierEnding": "minimal",
+	"typescript.suggest.completeFunctionCalls": true,
+	"typescript.inlayHints.parameterNames.enabled": "literals",
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"typescript.inlayHints.variableTypes.enabled": true,
+	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"typescript.inlayHints.parameterTypes.enabled": true,
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.preferences.jsxAttributeCompletionStyle": "auto",
+	"typescript.tsdk": "./node_modules/typescript/lib",
+
+	// ========================================
+	// JAVASCRIPT CONFIGURATION
+	// ========================================
+	"javascript.preferences.quoteStyle": "single",
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.preferences.importModuleSpecifierEnding": "minimal",
+	"javascript.suggest.autoImports": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+
+	// ========================================
+	// LANGUAGE FORMATTERS
+	// ========================================
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+
+	// ========================================
+	// BIOME CONFIGURATION
+	// ========================================
+	"biome.lsp.bin": "./node_modules/@biomejs/cli-darwin-arm64/biome",
+
+	// ========================================
+	// CSS
+	// ========================================
+	"css.lint.unknownAtRules": "ignore",
+
+	// ========================================
+	// SPELL CHECKER
+	// ========================================
+	"cSpell.words": [
+		"animejs",
+		"biomejs",
+		"Cocogitto",
+		"deckid",
+		"Dexie",
+		"gsap",
+		"Highcharts",
+		"HREFS",
+		"inlinesvg",
+		"jost",
+		"Leitner",
+		"Nuqs",
+		"opsi",
+		"pocketbase",
+		"português",
+		"primary",
+		"seagrass",
+		"sono",
+		"tailwindcss",
+		"turbopack",
+		"verno",
+		"yeap"
+	],
+
+	// ========================================
+	// FILE EXPLORER
+	// ========================================
+	"explorer.sortOrder": "filesFirst",
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .nvmrc, .node-version, .yarnrc, .npmrc",
+		"tsconfig.json": "tsconfig*.json",
+		"*.ts": "${capture}.test.ts, ${capture}.spec.ts, ${capture}.int.spec.ts",
+		"*.tsx": "${capture}.test.tsx, ${capture}.spec.tsx, ${capture}.module.css, ${capture}.stories.tsx",
+		".env": ".env*, .envrc, .env.example",
+		"Dockerfile": "docker-compose*.yml, .dockerignore",
+		"README.md": "CHANGELOG.md, CONTRIBUTING.md, LICENSE, CODE_OF_CONDUCT.md, CLAUDE.md, AGENTS.md",
+		"biome.json": ".biomeignore",
+		"next.config.js": "next-env.d.ts, next-sitemap.config.cjs",
+		"payload.config.ts": "payload-types.ts",
+		"vitest.config.mts": "vitest.setup.ts"
+	},
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+
+	// ========================================
+	// FILES & SEARCH CONFIGURATION
+	// ========================================
+	"files.watcherExclude": {
+		"**/node_modules/**": true,
+		"**/.next/**": true,
+		"**/tmp/**": true,
+		"**/coverage/**": true,
+		"**/dist/**": true,
+		"**/.cache/**": true
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/.next": true,
+		"**/coverage": true,
+		"**/tmp": true,
+		"**/dist": true,
+		"**/.cache": true,
+		"pnpm-lock.yaml": true,
+		"package-lock.json": false,
+		"**/*.tsbuildinfo": true,
+		"**/payload-types.ts": true
+	},
+	"files.associations": {
+		".env*": "dotenv",
+		"*.graphql": "graphql"
+	},
+	"files.exclude": {
+		"**/.DS_Store": true,
+		"**/.next": false,
+		"**/node_modules": true
+	},
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+
+	// ========================================
+	// GIT INTEGRATION
+	// ========================================
+	"git.ignoreLimitWarning": true,
+	"git.untrackedChanges": "separate",
+	"git.enableSmartCommit": false,
+	"git.confirmSync": false,
+	"git.autofetch": true
+}

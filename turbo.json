@@ -1,0 +1,75 @@
+{
+	"$schema": "https://turborepo.org/schema.json",
+	"ui": "tui",
+	"globalDependencies": [
+		"**/.env"
+	],
+	"globalEnv": [
+		"API_URL",
+		"WEBAPP_URL",
+		"reckoner_VERSION",
+		"VAPID_PRIVATE_KEY",
+		"WEBAPP_VERSION"
+	],
+	"tasks": {
+		"format": {
+			"dependsOn": [
+				"^format"
+			]
+		},
+		"build": {
+			"dependsOn": [
+				"^build"
+			],
+			"outputs": [
+				".next/**",
+				"!.next/cache/**",
+				"next-env.d.ts",
+				".output/**",
+				".vercel/output/**",
+				".vercel/**"
+			]
+		},
+		"ui": {
+			"persistent": false,
+			"cache": false
+		},
+		"dev": {
+			"persistent": true,
+			"cache": false,
+			"dependsOn": [
+				"^ui"
+			]
+		},
+		"start": {
+			"cache": true,
+			"persistent": true
+		},
+		"lint": {
+			"dependsOn": [
+				"^format"
+			]
+		},
+		"typecheck": {
+			"dependsOn": [
+				"^format"
+			],
+			"outputs": [
+				"node_modules/.cache/tsbuildinfo.json"
+			]
+		},
+		"test": {
+			"dependsOn": [
+				"^build"
+			]
+		},
+		"test:run": {
+			"dependsOn": [
+				"^build"
+			]
+		},
+		"clean": {
+			"cache": false
+		}
+	}
+}

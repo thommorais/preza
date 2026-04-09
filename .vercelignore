@@ -1,0 +1,3 @@
+# Ignore Beads metadata and sockets that break Vercel file reads
+.beads/
+apps/base/

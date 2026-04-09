@@ -1,0 +1,43 @@
+MANDATORY FILE TO READ/UPDATE:
+- prd/progress.txt
+
+TASK:
+- Work on task: reckoner-6ud
+
+MANDATORY WORKFLOW:
+- Use the bd CLI for task management
+
+EXECUTION STEPS (ALL REQUIRED):
+1) bd show reckoner-6ud            # Read task details and implementation steps
+2) bd update reckoner-6ud --status=in_progress   # Claim the task
+3) Implement ONLY reckoner-6ud     # Do not touch other tasks or files beyond scope
+4) Run type checks and lint ONLY for changed files
+5) Append a brief summary to prd/progress.txt:
+   - What you implemented
+   - Any errors encountered and how addressed
+   - If the task is too large, log blocker details here
+6) bd close reckoner-6ud            # Mark task complete (REQUIRED)
+7) bd sync                      # Sync changes with git remote
+8) Make a git commit for this feature with a clear message
+
+CRITICAL REQUIREMENTS:
+- Close the task with: bd close reckoner-6ud
+- Append progress notes to prd/progress.txt (include any issues/errors)
+- Work ONLY on the single task reckoner-6ud
+- If the task is too big to finish now: log blocker in prd/progress.txt and output: <promise>ERROR</promise>
+- If ANY issue occurs: append to prd/progress.txt, output: <promise>ERROR</promise> and explain the issue
+- If bd ready shows no tasks: output: <promise>COMPLETE</promise>
+
+QUALITY & STANDARDS:
+- Follow codebase architecture, patterns, and style guides
+- Maintain consistent lint/type standards already used in the repo
+- Write a focused commit message:
+  - feat(reckoner-6ud): [short summary]
+  - Include scope
+
+WORKFLOW EXAMPLE:
+1) bd update reckoner-6ud --status=in_progress
+2) [implement the task]
+3) bd close reckoner-6ud
+4) Append summary to prd/progress.txt
+5) bd sync

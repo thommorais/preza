@@ -2,27 +2,6 @@
 
 ## Hexagonal architecture (ports and adapters)
 
-The flashcards feature exemplifies the architectural pattern for this codebase:
-
-```
-/src/features/flashcards/
-├── domain/              # Pure business logic (no external dependencies)
-│   ├── types.ts         # Domain models with branded types
-│   ├── constants.ts     # Named domain constants
-│   ├── rules/           # Pure validation functions
-│   ├── reducers/        # Pure state machines
-│   └── selectors/       # Pure data extraction
-├── ports/               # Abstract interfaces (contracts)
-│   └── repositories/    # Repository port definitions
-├── adapters/            # Concrete implementations
-│   └── repositories/    # Repository adapters with domain mapping
-└── ui/                  # React presentation layer
-    ├── contexts/        # Dependency injection
-    ├── hooks/           # Domain integration hooks
-    ├── components/      # Feature-specific UI components
-    └── pages/           # Full-page components
-```
-
 Critical rules:
 
 - Domain layer has zero external dependencies.
@@ -78,8 +57,6 @@ type SessionState =
 const newState = reduceSessionState(currentState, action)
 ```
 
-See `/src/features/flashcards/domain/reducers/session-reducer.ts`.
-
 ## Dependency injection pattern
 
 Repositories are injected via React Context:
@@ -95,15 +72,3 @@ Repositories are injected via React Context:
 const { cardRepository } = useFlashcardRepositories()
 const result = await cardRepository.getDueCards(deckId)
 ```
-
-## Data flow
-
-1. UI calls hook: `useStudySession(deckId)`
-2. Hook uses repository port: `cardRepository.getDueCards()`
-3. Adapter fetches infrastructure data: API/DB/Mock
-4. Adapter maps to domain model: `mapToCard(rawData)`
-5. Returns `Result<DomainModel>`: `ok(cards)` or `err(error)`
-6. Hook updates state via reducer: `reduceSessionState(state, action)`
-7. UI renders from domain state
-
-Never return infrastructure types from adapters.

@@ -25,13 +25,3 @@
 ```
 
 Path alias: `_/*` maps to `/src/*` (configured in `tsconfig.json`).
-
-## Important files
-
-- `/src/lib/result.ts` - Error handling pattern
-- `/src/features/flashcards/domain/types.ts` - Domain models and branded types
-- `/src/features/flashcards/domain/reducers/session-reducer.ts` - State machine
-- `/src/features/flashcards/ui/hooks/use-study-session.ts` - Main integration hook
-- `/src/constants/routes.ts` - Centralized route definitions
-- `/turbo.json` - Build orchestration config
-- `/biome.json` - Linting and formatting rules

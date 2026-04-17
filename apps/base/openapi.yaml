@@ -1,0 +1,414 @@
+openapi: 3.0.3
+info:
+  title: Preza API
+  description: Invite, booking, and guest management for Latin American nightclubs and events.
+  version: 0.1.0
+
+servers:
+  - url: http://localhost:8090
+    description: Local development
+
+tags:
+  - name: invitations
+  - name: events
+  - name: guests
+
+components:
+  schemas:
+    Invitation:
+      type: object
+      properties:
+        ID:
+          type: string
+          example: abc123def456
+        EventID:
+          type: string
+          example: evt789
+        CreatedBy:
+          type: string
+          description: Promoter ID
+          example: prm000
+        GuestID:
+          type: string
+          example: gst111
+        Status:
+          type: string
+          enum: [pending, confirmed, declined, used]
+          example: pending
+        Token:
+          type: string
+          description: 32-char hex string used for check-in
+          example: a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4
+        PlusOnes:
+          type: integer
+          minimum: 0
+          example: 1
+        PlusOneNames:
+          type: array
+          items:
+            type: string
+          example: ["Mariana Alves"]
+        RSVPAt:
+          type: string
+          format: date-time
+          nullable: true
+          example: "2026-04-10T20:00:00Z"
+        CheckedInAt:
+          type: string
+          format: date-time
+          nullable: true
+          example: null
+        Notes:
+          type: string
+          example: VIP frequente.
+        CreatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+        UpdatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+
+    Event:
+      type: object
+      properties:
+        ID:
+          type: string
+          example: evt789
+        VenueID:
+          type: string
+          example: ven123
+        CreatedBy:
+          type: string
+          description: Promoter ID
+          example: prm000
+        Name:
+          type: string
+          example: Réveillon Preza 2027
+        Date:
+          type: string
+          format: date-time
+          example: "2026-12-31T23:00:00Z"
+        MaxCapacity:
+          type: integer
+          minimum: 0
+          example: 500
+        Status:
+          type: string
+          enum: [draft, active, closed]
+          example: draft
+        CoverImage:
+          type: string
+          example: ""
+        Description:
+          type: string
+          example: A maior virada do ano.
+        CreatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+        UpdatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+
+    Guest:
+      type: object
+      properties:
+        ID:
+          type: string
+          example: gst111
+        Name:
+          type: string
+          example: Ana Almeida
+        Phone:
+          type: string
+          example: "+5511912345678"
+        Email:
+          type: string
+          format: email
+          example: ana.almeida@gmail.com
+        Notes:
+          type: string
+          example: Lista A.
+        CreatedBy:
+          type: string
+          description: User ID of the promoter who created this guest
+          example: usr222
+        CreatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+        UpdatedAt:
+          type: string
+          format: date-time
+          example: "2026-04-01T10:00:00Z"
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: check-in failed
+        data:
+          type: object
+
+paths:
+  /api/invitations:
+    post:
+      summary: Create invitation
+      description: Creates a new invitation for a guest to an event. The event must have status `active`.
+      tags: [invitations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event_id, created_by, guest_id]
+              properties:
+                event_id:
+                  type: string
+                  example: evt789
+                created_by:
+                  type: string
+                  description: Promoter ID
+                  example: prm000
+                guest_id:
+                  type: string
+                  example: gst111
+                plus_ones:
+                  type: integer
+                  minimum: 0
+                  default: 0
+                  example: 1
+                notes:
+                  type: string
+                  example: VIP frequente.
+      responses:
+        "201":
+          description: Invitation created. Status is always `pending`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invitation"
+        "400":
+          description: Invalid request body.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: Event is not `active`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/invitations/{token}/check-in:
+    patch:
+      summary: Check in a guest
+      description: Marks an invitation as `used`. Fails if the invitation is already checked in.
+      tags: [invitations]
+      parameters:
+        - name: token
+          in: path
+          required: true
+          description: 32-char hex token from the invitation
+          schema:
+            type: string
+            example: a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4
+      responses:
+        "200":
+          description: Guest checked in. Status is `used` and `CheckedInAt` is set.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invitation"
+        "404":
+          description: Token not found or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Invitation already checked in.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/events/{eventId}/invitations:
+    get:
+      summary: List invitations by event
+      tags: [invitations]
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: evt789
+      responses:
+        "200":
+          description: Array of invitations for the event.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invitation"
+        "404":
+          description: Event not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/promoters/{promoterId}/invitations:
+    get:
+      summary: List invitations by promoter
+      tags: [invitations]
+      parameters:
+        - name: promoterId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: prm000
+      responses:
+        "200":
+          description: Array of invitations created by the promoter.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invitation"
+        "404":
+          description: Promoter not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/events:
+    post:
+      summary: Create event
+      description: Creates a new event. Status is always `draft` on creation.
+      tags: [events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [venue_id, created_by, name, date]
+              properties:
+                venue_id:
+                  type: string
+                  example: ven123
+                created_by:
+                  type: string
+                  description: Promoter ID
+                  example: prm000
+                name:
+                  type: string
+                  example: Réveillon Preza 2027
+                date:
+                  type: string
+                  format: date-time
+                  description: RFC3339 datetime
+                  example: "2026-12-31T23:00:00Z"
+                max_capacity:
+                  type: integer
+                  minimum: 0
+                  example: 500
+                description:
+                  type: string
+                  example: A maior virada do ano.
+      responses:
+        "201":
+          description: Event created. Status is always `draft`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+        "400":
+          description: Invalid body or invalid date format.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/promoters/{promoterId}/events:
+    get:
+      summary: List events by promoter
+      description: Returns events created by the promoter, ordered by date descending.
+      tags: [events]
+      parameters:
+        - name: promoterId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: prm000
+      responses:
+        "200":
+          description: Array of events.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+        "404":
+          description: Promoter not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/promoters/{promoterId}/guests:
+    get:
+      summary: List guests by promoter
+      description: Returns all guests on the promoter's guest list.
+      tags: [guests]
+      parameters:
+        - name: promoterId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: prm000
+      responses:
+        "200":
+          description: Array of guests.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Guest"
+        "404":
+          description: Promoter not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"

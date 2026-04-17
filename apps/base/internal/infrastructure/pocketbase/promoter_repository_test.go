@@ -9,7 +9,7 @@ import (
 
 func TestPromoterRepository_FindByID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewPromoterRepository(app)
+	repo := pb.NewPromoterRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("promoters", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -34,7 +34,7 @@ func TestPromoterRepository_FindByID(t *testing.T) {
 
 func TestPromoterRepository_FindByUserID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewPromoterRepository(app)
+	repo := pb.NewPromoterRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("promoters", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -53,7 +53,7 @@ func TestPromoterRepository_FindByUserID(t *testing.T) {
 
 func TestPromoterRepository_FindByID_NotFound(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewPromoterRepository(app)
+	repo := pb.NewPromoterRepository(app, testLogger())
 
 	_, err := repo.FindByID(bg(), promoter.ID("doesnotexist0000000"))
 	if err == nil {
@@ -63,7 +63,7 @@ func TestPromoterRepository_FindByID_NotFound(t *testing.T) {
 
 func TestPromoterRepository_Save_Update(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewPromoterRepository(app)
+	repo := pb.NewPromoterRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("promoters", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {

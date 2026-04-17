@@ -1,4 +1,4 @@
 export const meta = {
-	name: 'thom',
-	description: 'thom template.',
+	name: 'preza',
+	description: 'preza template.',
 }

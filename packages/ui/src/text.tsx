@@ -7,7 +7,7 @@ export function Text({ className, ...props }: React.ComponentPropsWithoutRef<'p'
 			data-slot='text'
 			{...props}
 			className={clsx(className, 'text-base/6 text-zinc-500 sm:text-sm/6')}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		/>
 	)
 }
@@ -17,13 +17,13 @@ export function TextLink({ className, ...props }: React.ComponentPropsWithoutRef
 		<Link
 			{...props}
 			className={clsx(className, 'text-black underline decoration-black/50 data-hover:decoration-black')}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		/>
 	)
 }
 
 export function Strong({ className, ...props }: React.ComponentPropsWithoutRef<'strong'>) {
-	return <strong {...props} className={clsx(className, 'font-medium text-black')} data-id='thom-ui' />
+	return <strong {...props} className={clsx(className, 'font-medium text-black')} data-id='preza-ui' />
 }
 
 export function Code({ className, ...props }: React.ComponentPropsWithoutRef<'code'>) {
@@ -34,7 +34,7 @@ export function Code({ className, ...props }: React.ComponentPropsWithoutRef<'co
 				className,
 				'rounded-sm border border-black/10 bg-black/2.5 px-0.5 font-medium text-black text-sm sm:text-[0.8125rem]',
 			)}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		/>
 	)
 }

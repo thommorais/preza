@@ -176,7 +176,7 @@ export const Card = ({ variant, padding, interactive, bordered, className, asChi
 		<Comp
 			{...props}
 			className={cardClasses({ variant, padding, interactive, bordered, class: className })}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		/>
 	)
 }

@@ -5,40 +5,52 @@ import (
 	"preza/internal/domain/event"
 	"preza/internal/domain/guest"
 	"preza/internal/domain/invitation"
+	"preza/internal/domain/logger"
 	"preza/internal/domain/promoter"
+	"time"
 
 	"github.com/pocketbase/pocketbase/core"
 )
 
 type InvitationRepository struct {
 	app core.App
+	log logger.Logger
 }
 
-func NewInvitationRepository(app core.App) *InvitationRepository {
-	return &InvitationRepository{app: app}
+func NewInvitationRepository(app core.App, log logger.Logger) *InvitationRepository {
+	return &InvitationRepository{app: app, log: log}
 }
 
 func (r *InvitationRepository) FindByID(_ context.Context, id invitation.ID) (*invitation.Invitation, error) {
+	start := time.Now()
 	record, err := r.app.FindRecordById("invitations", string(id))
 	if err != nil {
+		r.log.Error("invitations.FindByID failed", logger.F("id", id), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("invitations.FindByID", logger.F("id", id), logger.F("latency_ms", ms(start)))
 	return recordToInvitation(record), nil
 }
 
 func (r *InvitationRepository) FindByToken(_ context.Context, token string) (*invitation.Invitation, error) {
+	start := time.Now()
 	record, err := r.app.FindFirstRecordByFilter("invitations", "token = {:token}", map[string]any{"token": token})
 	if err != nil {
+		r.log.Error("invitations.FindByToken failed", logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("invitations.FindByToken", logger.F("id", record.Id), logger.F("latency_ms", ms(start)))
 	return recordToInvitation(record), nil
 }
 
 func (r *InvitationRepository) FindByEventID(_ context.Context, eventID event.ID) ([]*invitation.Invitation, error) {
+	start := time.Now()
 	records, err := r.app.FindRecordsByFilter("invitations", "event_id = {:eventID}", "-created", 0, 0, map[string]any{"eventID": string(eventID)})
 	if err != nil {
+		r.log.Error("invitations.FindByEventID failed", logger.F("event", eventID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("invitations.FindByEventID", logger.F("event", eventID), logger.F("count", len(records)), logger.F("latency_ms", ms(start)))
 
 	invitations := make([]*invitation.Invitation, len(records))
 	for i, rec := range records {
@@ -48,10 +60,13 @@ func (r *InvitationRepository) FindByEventID(_ context.Context, eventID event.ID
 }
 
 func (r *InvitationRepository) FindByPromoterID(_ context.Context, promoterID promoter.ID) ([]*invitation.Invitation, error) {
+	start := time.Now()
 	records, err := r.app.FindRecordsByFilter("invitations", "created_by = {:promoterID}", "-created", 0, 0, map[string]any{"promoterID": string(promoterID)})
 	if err != nil {
+		r.log.Error("invitations.FindByPromoterID failed", logger.F("promoter", promoterID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("invitations.FindByPromoterID", logger.F("promoter", promoterID), logger.F("count", len(records)), logger.F("latency_ms", ms(start)))
 
 	invitations := make([]*invitation.Invitation, len(records))
 	for i, rec := range records {
@@ -61,6 +76,7 @@ func (r *InvitationRepository) FindByPromoterID(_ context.Context, promoterID pr
 }
 
 func (r *InvitationRepository) Save(_ context.Context, inv *invitation.Invitation) error {
+	start := time.Now()
 	var record *core.Record
 
 	if inv.ID != "" {
@@ -94,10 +110,12 @@ func (r *InvitationRepository) Save(_ context.Context, inv *invitation.Invitatio
 	}
 
 	if err := r.app.Save(record); err != nil {
+		r.log.Error("invitations.Save failed", logger.F("id", inv.ID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return err
 	}
 
 	inv.ID = invitation.ID(record.Id)
+	r.log.Info("invitations.Save", logger.F("id", inv.ID), logger.F("latency_ms", ms(start)))
 	return nil
 }
 

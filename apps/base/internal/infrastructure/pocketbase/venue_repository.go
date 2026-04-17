@@ -2,33 +2,42 @@ package pocketbase
 
 import (
 	"context"
+	"preza/internal/domain/logger"
 	"preza/internal/domain/promoter"
 	"preza/internal/domain/venue"
+	"time"
 
 	"github.com/pocketbase/pocketbase/core"
 )
 
 type VenueRepository struct {
 	app core.App
+	log logger.Logger
 }
 
-func NewVenueRepository(app core.App) *VenueRepository {
-	return &VenueRepository{app: app}
+func NewVenueRepository(app core.App, log logger.Logger) *VenueRepository {
+	return &VenueRepository{app: app, log: log}
 }
 
 func (r *VenueRepository) FindByID(_ context.Context, id venue.ID) (*venue.Venue, error) {
+	start := time.Now()
 	record, err := r.app.FindRecordById("venues", string(id))
 	if err != nil {
+		r.log.Error("venues.FindByID failed", logger.F("id", id), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("venues.FindByID", logger.F("id", id), logger.F("latency_ms", ms(start)))
 	return recordToVenue(record), nil
 }
 
 func (r *VenueRepository) FindByPromoterID(_ context.Context, promoterID promoter.ID) ([]*venue.Venue, error) {
+	start := time.Now()
 	records, err := r.app.FindRecordsByFilter("venues", "promoter_id = {:promoterID}", "-created", 0, 0, map[string]any{"promoterID": string(promoterID)})
 	if err != nil {
+		r.log.Error("venues.FindByPromoterID failed", logger.F("promoter", promoterID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("venues.FindByPromoterID", logger.F("promoter", promoterID), logger.F("count", len(records)), logger.F("latency_ms", ms(start)))
 
 	venues := make([]*venue.Venue, len(records))
 	for i, rec := range records {
@@ -38,6 +47,7 @@ func (r *VenueRepository) FindByPromoterID(_ context.Context, promoterID promote
 }
 
 func (r *VenueRepository) Save(_ context.Context, v *venue.Venue) error {
+	start := time.Now()
 	var record *core.Record
 
 	if v.ID != "" {
@@ -61,10 +71,12 @@ func (r *VenueRepository) Save(_ context.Context, v *venue.Venue) error {
 	record.Set("capacity", v.Capacity)
 
 	if err := r.app.Save(record); err != nil {
+		r.log.Error("venues.Save failed", logger.F("id", v.ID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return err
 	}
 
 	v.ID = venue.ID(record.Id)
+	r.log.Info("venues.Save", logger.F("id", v.ID), logger.F("latency_ms", ms(start)))
 	return nil
 }
 

@@ -3,33 +3,42 @@ package pocketbase
 import (
 	"context"
 	"preza/internal/domain/event"
+	"preza/internal/domain/logger"
 	"preza/internal/domain/promoter"
 	"preza/internal/domain/venue"
+	"time"
 
 	"github.com/pocketbase/pocketbase/core"
 )
 
 type EventRepository struct {
 	app core.App
+	log logger.Logger
 }
 
-func NewEventRepository(app core.App) *EventRepository {
-	return &EventRepository{app: app}
+func NewEventRepository(app core.App, log logger.Logger) *EventRepository {
+	return &EventRepository{app: app, log: log}
 }
 
 func (r *EventRepository) FindByID(_ context.Context, id event.ID) (*event.Event, error) {
+	start := time.Now()
 	record, err := r.app.FindRecordById("events", string(id))
 	if err != nil {
+		r.log.Error("events.FindByID failed", logger.F("id", id), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("events.FindByID", logger.F("id", id), logger.F("latency_ms", ms(start)))
 	return recordToEvent(record), nil
 }
 
 func (r *EventRepository) FindByVenueID(_ context.Context, venueID venue.ID) ([]*event.Event, error) {
+	start := time.Now()
 	records, err := r.app.FindRecordsByFilter("events", "venue_id = {:venueID}", "-date", 0, 0, map[string]any{"venueID": string(venueID)})
 	if err != nil {
+		r.log.Error("events.FindByVenueID failed", logger.F("venue", venueID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("events.FindByVenueID", logger.F("venue", venueID), logger.F("count", len(records)), logger.F("latency_ms", ms(start)))
 
 	events := make([]*event.Event, len(records))
 	for i, rec := range records {
@@ -39,10 +48,13 @@ func (r *EventRepository) FindByVenueID(_ context.Context, venueID venue.ID) ([]
 }
 
 func (r *EventRepository) FindByPromoterID(_ context.Context, promoterID promoter.ID) ([]*event.Event, error) {
+	start := time.Now()
 	records, err := r.app.FindRecordsByFilter("events", "created_by = {:promoterID}", "-date", 0, 0, map[string]any{"promoterID": string(promoterID)})
 	if err != nil {
+		r.log.Error("events.FindByPromoterID failed", logger.F("promoter", promoterID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return nil, err
 	}
+	r.log.Info("events.FindByPromoterID", logger.F("promoter", promoterID), logger.F("count", len(records)), logger.F("latency_ms", ms(start)))
 
 	events := make([]*event.Event, len(records))
 	for i, rec := range records {
@@ -52,6 +64,7 @@ func (r *EventRepository) FindByPromoterID(_ context.Context, promoterID promote
 }
 
 func (r *EventRepository) Save(_ context.Context, e *event.Event) error {
+	start := time.Now()
 	var record *core.Record
 
 	if e.ID != "" {
@@ -77,10 +90,12 @@ func (r *EventRepository) Save(_ context.Context, e *event.Event) error {
 	record.Set("description", e.Description)
 
 	if err := r.app.Save(record); err != nil {
+		r.log.Error("events.Save failed", logger.F("id", e.ID), logger.F("latency_ms", ms(start)), logger.F("error", err))
 		return err
 	}
 
 	e.ID = event.ID(record.Id)
+	r.log.Info("events.Save", logger.F("id", e.ID), logger.F("latency_ms", ms(start)))
 	return nil
 }
 

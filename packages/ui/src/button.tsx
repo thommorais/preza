@@ -318,7 +318,7 @@ export const Button = ({
 			disabled={isDisabled}
 			className={buttonClasses({ color, variant, size, fullWidth, loading, class: [className, 'cursor-pointer'] })}
 			aria-disabled={isDisabled}
-			data-id='thom-ui'
+			data-id='preza-ui'
 			data-color={color}
 			data-variant={variant}
 		>

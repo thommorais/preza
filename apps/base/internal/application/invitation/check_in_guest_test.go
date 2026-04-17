@@ -8,17 +8,22 @@ import (
 
 	appinvitation "preza/internal/application/invitation"
 	"preza/internal/domain/invitation"
+	"preza/internal/domain/logger"
 	pb "preza/internal/infrastructure/pocketbase"
 
 	"github.com/pocketbase/pocketbase/tests"
 )
 
+type noopLogger struct{}
+
+func (noopLogger) Info(_ string, _ ...logger.Field)  {}
+func (noopLogger) Warn(_ string, _ ...logger.Field)  {}
+func (noopLogger) Error(_ string, _ ...logger.Field) {}
+
 func newTestApp(t *testing.T) *tests.TestApp {
 	t.Helper()
 
 	_, currentFile, _, _ := runtime.Caller(0)
-	// currentFile: .../apps/base/internal/application/invitation/...
-	// pb_data:     .../apps/base/pb_data
 	pbDataDir := filepath.Join(filepath.Dir(currentFile), "..", "..", "..", "pb_data")
 
 	app, err := tests.NewTestApp(pbDataDir)
@@ -32,7 +37,7 @@ func newTestApp(t *testing.T) *tests.TestApp {
 
 func TestCheckInGuest_Success(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, noopLogger{})
 	uc := appinvitation.NewCheckInGuestUseCase(repo)
 
 	records, err := app.FindRecordsByFilter("invitations", "status = 'confirmed'", "+created", 1, 0)
@@ -55,7 +60,7 @@ func TestCheckInGuest_Success(t *testing.T) {
 
 func TestCheckInGuest_AlreadyCheckedIn(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, noopLogger{})
 	uc := appinvitation.NewCheckInGuestUseCase(repo)
 
 	records, err := app.FindRecordsByFilter("invitations", "status = 'used'", "+created", 1, 0)
@@ -72,7 +77,7 @@ func TestCheckInGuest_AlreadyCheckedIn(t *testing.T) {
 
 func TestCheckInGuest_InvalidToken(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, noopLogger{})
 	uc := appinvitation.NewCheckInGuestUseCase(repo)
 
 	_, err := uc.Execute(context.Background(), "invalidtoken000000000000000000000000")

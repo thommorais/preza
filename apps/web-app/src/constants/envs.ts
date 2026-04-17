@@ -44,7 +44,7 @@ const createEnvs = (parsed: MergedSafeParseReturn): Record<ServerEnvsKeys, strin
 const clientSchema = z.object({
 	NODE_ENV: z.enum(['development', 'test', 'production']),
 	NEXT_PUBLIC_WEBAPP_URL: z.string().url().default('https://localhost:3000'),
-	NEXT_PUBLIC_SITE_NAME: z.string().default('Thom'),
+	NEXT_PUBLIC_SITE_NAME: z.string().default('preza'),
 	WEBAPP_URL: z.string().url().default('https://localhost:3000'),
 	NEXT_PUBLIC_VAPID_PUBLIC_KEY: z.string(),
 	NEXT_PUBLIC_API_URL: z.string().url().default('http://127.0.0.1:8090'),

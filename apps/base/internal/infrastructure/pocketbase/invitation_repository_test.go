@@ -11,7 +11,7 @@ import (
 
 func TestInvitationRepository_FindByID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -39,7 +39,7 @@ func TestInvitationRepository_FindByID(t *testing.T) {
 
 func TestInvitationRepository_FindByToken(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -58,7 +58,7 @@ func TestInvitationRepository_FindByToken(t *testing.T) {
 
 func TestInvitationRepository_FindByToken_Invalid(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	_, err := repo.FindByToken(bg(), "invalidtoken000000000000000000000000")
 	if err == nil {
@@ -68,7 +68,7 @@ func TestInvitationRepository_FindByToken_Invalid(t *testing.T) {
 
 func TestInvitationRepository_FindByEventID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -92,7 +92,7 @@ func TestInvitationRepository_FindByEventID(t *testing.T) {
 
 func TestInvitationRepository_FindByPromoterID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -111,7 +111,7 @@ func TestInvitationRepository_FindByPromoterID(t *testing.T) {
 
 func TestInvitationRepository_StatusMapping(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	statuses := []string{"pending", "confirmed", "declined", "used"}
 	for _, status := range statuses {
@@ -138,7 +138,7 @@ func TestInvitationRepository_StatusMapping(t *testing.T) {
 
 func TestInvitationRepository_CheckedInAt_Populated(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "status = 'used'", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -156,7 +156,7 @@ func TestInvitationRepository_CheckedInAt_Populated(t *testing.T) {
 
 func TestInvitationRepository_Save_CheckIn(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "status = 'confirmed'", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -189,7 +189,7 @@ func TestInvitationRepository_Save_CheckIn(t *testing.T) {
 
 func TestInvitationRepository_Save_AlreadyCheckedIn(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewInvitationRepository(app)
+	repo := pb.NewInvitationRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("invitations", "status = 'used'", "+created", 1, 0)
 	if err != nil || len(records) == 0 {

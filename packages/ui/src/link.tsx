@@ -8,4 +8,4 @@
 
 import type React from 'react'
 
-export const Link = (props: React.ComponentProps<'a'>) => <a {...props} data-id='thom-ui' />
+export const Link = (props: React.ComponentProps<'a'>) => <a {...props} data-id='preza-ui' />

@@ -7,7 +7,7 @@ type Notification = { message: string; subscription: PushSubscription }
 
 export async function POST(req: NextRequest): Promise<Response> {
 	try {
-		webpush.setVapidDetails('mailto:inboxdothom@gmail.com', ENVS.NEXT_PUBLIC_VAPID_PUBLIC_KEY, ENVS.VAPID_PRIVATE_KEY)
+		webpush.setVapidDetails('mailto:inboxdopreza@gmail.com', ENVS.NEXT_PUBLIC_VAPID_PUBLIC_KEY, ENVS.VAPID_PRIVATE_KEY)
 
 		let body: Notification
 		try {

@@ -84,7 +84,7 @@ export function Checkbox({ color = 'primary', id, ...props }: CheckboxProps) {
 	return (
 		<Headless.Checkbox
 			data-slot='control'
-			data-id='thom-ui'
+			data-id='preza-ui'
 			id={id}
 			{...props}
 			className={tv({ base: ['group inline-flex focus:outline-hidden'] })({ class: [props.className] })}

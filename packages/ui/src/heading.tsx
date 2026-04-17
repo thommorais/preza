@@ -21,5 +21,5 @@ const subHeadingClasses = tv({
 export function Subheading({ className, level = 2, ...props }: HeadingProps) {
 	const Element: `h${typeof level}` = `h${level}`
 
-	return <Element {...props} className={subHeadingClasses({ class: [className] })} data-id='thom-ui' />
+	return <Element {...props} className={subHeadingClasses({ class: [className] })} data-id='preza-ui' />
 }

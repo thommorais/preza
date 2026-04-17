@@ -123,7 +123,7 @@ export function Switch({
 			id={id}
 			{...props}
 			className={switchClasses({ color, class: className })}
-			data-id='thom-ui'
+			data-id='preza-ui'
 			data-theme={JSON.stringify({ color })}
 		>
 			<span aria-hidden='true' className={switchThumbClasses()} />

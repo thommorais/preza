@@ -13,5 +13,5 @@ const dividerClasses = tv({
 type DividerProps = React.ComponentPropsWithRef<'hr'> & VariantProps<typeof dividerClasses>
 
 export const Divider = ({ soft, className, ...props }: DividerProps) => {
-	return <hr {...props} className={dividerClasses({ class: [className], soft })} data-id='thom-ui' />
+	return <hr {...props} className={dividerClasses({ class: [className], soft })} data-id='preza-ui' />
 }

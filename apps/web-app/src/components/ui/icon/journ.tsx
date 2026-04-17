@@ -1,7 +1,7 @@
 import type React from 'react'
 import { forwardRef } from 'react'
 
-export const thom = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(function thom(props) {
+export const preza = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(function preza(props) {
 	return (
 		<svg className={props.className} width='485' height='158' fill='none' viewBox='0 0 485 158'>
 			<path

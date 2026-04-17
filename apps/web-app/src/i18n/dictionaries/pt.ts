@@ -1,6 +1,6 @@
 // cSpell: disable
 const pt = {
-	name: 'thom',
+	name: 'preza',
 	// auth
 	sign_out: 'sair',
 } as const

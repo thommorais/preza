@@ -23,7 +23,7 @@ export function Badge({ color = 'zinc', className, ...props }: BadgeProps & Reac
 				'inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 font-medium text-sm/5 sm:text-xs/5 forced-colors:outline',
 				colors[color],
 			)}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		/>
 	)
 }

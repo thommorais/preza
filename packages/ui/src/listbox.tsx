@@ -169,7 +169,7 @@ export function ListboxDescription({ className, children, ...props }: React.Comp
 				className,
 				'flex flex-1 overflow-hidden text-zinc-500 before:w-2 before:min-w-0 before:shrink group-data-focus/option:text-white',
 			)}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		>
 			<span className='flex-1 truncate'>{children}</span>
 		</span>

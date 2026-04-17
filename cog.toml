@@ -9,8 +9,8 @@ tag_prefix = "v"
 path = "CHANGELOG.md"
 template = "remote"
 remote = "github.com"
-repository = "thom"
-owner = "thommorais"
+repository = "preza"
+owner = "prezamorais"
 
 [commit_types]
 feat = { changelog_title = "Features" }

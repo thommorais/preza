@@ -96,7 +96,7 @@ export function Radio({
 			id={id}
 			{...props}
 			className={clsx(className, 'group inline-flex focus:outline-hidden')}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		>
 			<span className={clsx([base, colors[color]])}>
 				<span

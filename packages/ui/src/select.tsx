@@ -22,7 +22,7 @@ export const Select = forwardRef(function Select(
 				// Disabled state
 				'has-data-disabled:opacity-50 has-data-disabled:before:bg-black/5 has-data-disabled:before:shadow-none',
 			])}
-			data-id='thom-ui'
+			data-id='preza-ui'
 		>
 			<Headless.Select
 				ref={ref}

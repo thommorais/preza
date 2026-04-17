@@ -8,7 +8,7 @@ import { logger } from '_/lib/logger'
 import { useState } from 'react'
 
 // const VAPID = {
-// 	subject: 'mailto: <inboxdothom@gmail.com>',
+// 	subject: 'mailto: <inboxdopreza@gmail.com>',
 // 	publicKey: 'BIbmE_3OVGJzeipEKEkKq2_iF6Q9czyybOkMcXn58-qgxFYwBZIElIKpJaZYJZu5YHBBzM3dmxQj62KchFuYHdI',
 // 	privateKey: 'WIyn86q5_XlKqm71V9RJCMR1uSVZ9uIFKBv44gEMTYM',
 // }

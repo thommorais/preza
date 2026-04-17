@@ -16,7 +16,7 @@ func nowUTC() time.Time {
 
 func TestEventRepository_FindByID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewEventRepository(app)
+	repo := pb.NewEventRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("events", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -41,7 +41,7 @@ func TestEventRepository_FindByID(t *testing.T) {
 
 func TestEventRepository_FindByVenueID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewEventRepository(app)
+	repo := pb.NewEventRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("events", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -65,7 +65,7 @@ func TestEventRepository_FindByVenueID(t *testing.T) {
 
 func TestEventRepository_FindByPromoterID(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewEventRepository(app)
+	repo := pb.NewEventRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("events", "id != ''", "+created", 1, 0)
 	if err != nil || len(records) == 0 {
@@ -84,7 +84,7 @@ func TestEventRepository_FindByPromoterID(t *testing.T) {
 
 func TestEventRepository_StatusMapping(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewEventRepository(app)
+	repo := pb.NewEventRepository(app, testLogger())
 
 	cases := []struct {
 		filter string
@@ -114,7 +114,7 @@ func TestEventRepository_StatusMapping(t *testing.T) {
 
 func TestEventRepository_Save_Update(t *testing.T) {
 	app := newTestApp(t)
-	repo := pb.NewEventRepository(app)
+	repo := pb.NewEventRepository(app, testLogger())
 
 	records, err := app.FindRecordsByFilter("events", "status = 'active'", "+created", 1, 0)
 	if err != nil || len(records) == 0 {

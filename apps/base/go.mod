@@ -1,4 +1,4 @@
-module thom
+module preza
 
 go 1.25.0
 
